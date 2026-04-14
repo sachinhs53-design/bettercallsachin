@@ -7,6 +7,7 @@
 <link rel="icon" type="image/jpeg" href="https://media.licdn.com/dms/image/v2/D5603AQEDRHF04Kfljw/profile-displayphoto-crop_800_800/B56ZtB6z8sK4AI-/0/1766337495937?e=1777507200&v=beta&t=-bAW9fJr415Y_yLLPIof2P1QV1pvsnYfKcBD1Rd7QLQ">
 <link rel="shortcut icon" type="image/jpeg" href="https://media.licdn.com/dms/image/v2/D5603AQEDRHF04Kfljw/profile-displayphoto-crop_800_800/B56ZtB6z8sK4AI-/0/1766337495937?e=1777507200&v=beta&t=-bAW9fJr415Y_yLLPIof2P1QV1pvsnYfKcBD1Rd7QLQ">
 <link rel="apple-touch-icon" href="https://media.licdn.com/dms/image/v2/D5603AQEDRHF04Kfljw/profile-displayphoto-crop_800_800/B56ZtB6z8sK4AI-/0/1766337495937?e=1777507200&v=beta&t=-bAW9fJr415Y_yLLPIof2P1QV1pvsnYfKcBD1Rd7QLQ">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%230c0c0c'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='serif' font-size='18' fill='white'>S</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -72,7 +73,6 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,246,2
   border-bottom:1px solid var(--rule);
   position:relative;overflow:hidden;
 }
-/* Warm off-white texture — subtle diagonal stripe */
 .blog::before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background-image:repeating-linear-gradient(
@@ -83,8 +83,9 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,246,2
 }
 .blog::after{display:none;}
 .blog-inner{max-width:760px;margin:0 auto;position:relative;z-index:1;}
+.blog-left{display:contents;}
+.blog-right{display:contents;}
 
-/* label — now with two thin horizontal rules */
 .sec-label{
   font-size:0.6rem;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;
   color:var(--black);margin-bottom:1.8rem;
@@ -93,7 +94,6 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,246,2
 }
 .sec-label::before,.sec-label::after{content:'';display:block;width:28px;height:1px;background:var(--black);}
 
-/* Big editorial heading */
 .blog-h2{
   font-family:'Fraunces',serif;
   font-size:clamp(2.8rem,6vw,5.2rem);
@@ -109,16 +109,15 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,246,2
   margin-bottom:3.5rem;max-width:460px;
   margin-left:auto;margin-right:auto;
 }
-/* decorative ornament instead of plain rule */
+.blog-left-cta{display:none;}
+
 .blog-rule{
   display:flex;align-items:center;justify-content:center;
   gap:.8rem;margin:0 auto 3.5rem;
   font-size:0.55rem;color:var(--light);letter-spacing:.2em;
 }
 .blog-rule::before,.blog-rule::after{content:'';display:block;width:40px;height:1px;background:var(--rule);}
-.blog-rule span{content:'✦';color:var(--light);}
 
-/* article rows — card-style on hover */
 .blog-list{list-style:none;text-align:left;}
 .blog-row{
   display:grid;grid-template-columns:auto 1fr auto;
@@ -131,7 +130,6 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,246,2
 .blog-row::before{display:none;}
 .blog-row:hover{background:var(--white);padding-left:1.2rem;padding-right:1.2rem;border-color:transparent;box-shadow:0 2px 20px rgba(0,0,0,0.06);margin:0 -1.2rem;}
 
-/* article number */
 .blog-row-num{
   font-family:'Fraunces',serif;
   font-size:0.7rem;font-weight:300;color:var(--rule);
@@ -148,15 +146,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,246,2
   transition:color .25s;
 }
 .blog-row:hover .blog-row-title{color:var(--black);}
-.blog-row-cat{
-  font-size:0.58rem;font-weight:500;letter-spacing:0.14em;
-  text-transform:uppercase;color:var(--light);
-}
-.blog-row-date{
-  font-size:0.62rem;font-weight:300;
-  color:var(--light);white-space:nowrap;
-  transition:color .25s;
-}
+.blog-row-cat{font-size:0.58rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--light);}
+.blog-row-date{font-size:0.62rem;font-weight:300;color:var(--light);white-space:nowrap;transition:color .25s;}
 .blog-row:hover .blog-row-date{color:var(--mid);}
 
 .blog-cta-wrap{margin-top:3.5rem;}
@@ -170,14 +161,14 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,246,2
 .blog-cta:hover{background:transparent;color:var(--black);}
 
 /* ── PRACTICE ── */
-.practice{background:var(--black);padding:110px 2.5rem;}
+.practice{background:#1e2235;padding:110px 2.5rem;}
 .practice-inner{max-width:1200px;margin:0 auto;}
-.practice-label{font-size:0.62rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:4rem;}
+.practice-label{font-size:0.62rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4rem;}
 
 /* horizontal grid */
-.prows{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06);}
+.prows{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.1);}
 .prow{
-  background:var(--black);
+  background:#1e2235;
   padding:2.2rem 1.8rem;
   display:flex;flex-direction:column;gap:.9rem;
   cursor:pointer;
@@ -194,10 +185,10 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,246,2
 .prow:hover::after{opacity:1;}
 .prow-icon{font-size:1.5rem;transition:transform .3s;}
 .prow:hover .prow-icon{transform:scale(1.12);}
-.prow-n{font-size:0.56rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.18);}
-.prow-name{font-family:'Fraunces',serif;font-size:clamp(1.05rem,1.5vw,1.3rem);font-weight:300;color:var(--white);letter-spacing:-0.01em;line-height:1.2;}
-.prow-desc{font-size:0.76rem;font-weight:300;color:rgba(255,255,255,0.32);line-height:1.6;}
-.prow-court{font-size:0.58rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-top:auto;padding-top:.5rem;border-top:1px solid rgba(255,255,255,0.07);transition:color .3s;}
+.prow-n{font-size:0.56rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.prow-name{font-family:'Fraunces',serif;font-size:clamp(1.05rem,1.5vw,1.3rem);font-weight:400;color:#ffffff;letter-spacing:-0.01em;line-height:1.2;}
+.prow-desc{font-size:0.78rem;font-weight:300;color:rgba(255,255,255,0.65);line-height:1.65;}
+.prow-court{font-size:0.58rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:auto;padding-top:.5rem;border-top:1px solid rgba(255,255,255,0.12);transition:color .3s;}
 .prow:hover .prow-court{color:rgba(255,255,255,0.45);}
 .prow-read{display:inline-flex;align-items:center;gap:.35rem;font-size:0.62rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.0);transition:color .3s;}
 .prow:hover .prow-read{color:rgba(255,255,255,0.6);}
@@ -225,7 +216,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,246,2
 #pmodal-court{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--rule);font-size:0.65rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--light);}
 
 /* ── ABOUT (no photo) ── */
-.about-section{padding:110px 2.5rem;border-bottom:1px solid var(--rule);}
+.about-section{padding:110px 2.5rem;border-bottom:1px solid var(--rule);background:var(--white);}
 .about-inner{max-width:1200px;margin:0 auto;}
 .about-top{display:grid;grid-template-columns:1fr 1fr;gap:6rem;margin-bottom:5rem;align-items:start;}
 .about-label{font-size:0.62rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);margin-bottom:2rem;}
@@ -285,9 +276,35 @@ footer{background:var(--off);padding:1.8rem 2.5rem;border-top:1px solid rgba(255
 /* ── ARTICLE PAGE ── */
 #article-page{padding-top:66px;min-height:100vh;background:var(--bg);}
 .article-back-bar{border-bottom:1px solid var(--rule);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;}
-.article-back{font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;transition:color .2s;}
-.article-back:hover{color:var(--black);}
+.article-back{
+  font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--black);cursor:pointer;
+  display:inline-flex;align-items:center;gap:.6rem;
+  border:1.5px solid var(--black);
+  padding:.55rem 1.2rem;
+  transition:all .25s;
+  position:relative;
+  box-shadow:0 0 0 0 rgba(12,12,12,0);
+}
+.article-back:hover{
+  background:var(--black);
+  color:var(--white);
+  box-shadow:0 0 18px rgba(12,12,12,0.25), 0 0 6px rgba(12,12,12,0.15);
+}
 .article-back-name{font-family:'Fraunces',serif;font-size:0.85rem;font-weight:300;color:var(--light);}
+/* Bottom back button same style */
+.article-foot-back{
+  font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--black);cursor:pointer;
+  display:inline-flex;align-items:center;gap:.6rem;
+  border:1.5px solid var(--black);
+  padding:.55rem 1.2rem;
+  transition:all .25s;
+}
+.article-foot-back:hover{
+  background:var(--black);color:var(--white);
+  box-shadow:0 0 18px rgba(12,12,12,0.25);
+}
 .article-body{max-width:720px;margin:0 auto;padding:5rem 2.5rem 8rem;}
 .article-cat{font-size:0.62rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--light);margin-bottom:1.4rem;}
 .article-title{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.12;letter-spacing:-0.02em;color:var(--black);margin-bottom:1.5rem;}
@@ -304,8 +321,6 @@ footer{background:var(--off);padding:1.8rem 2.5rem;border-top:1px solid rgba(255
 .highlight-box{background:var(--white);border:1px solid var(--rule);padding:1.5rem 2rem;margin:2rem 0;}
 .highlight-box p{margin-bottom:0;}
 .article-foot{margin-top:5rem;padding-top:2.5rem;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-.article-foot-back{font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);cursor:pointer;transition:color .2s;}
-.article-foot-back:hover{color:var(--black);}
 .article-foot-author{font-size:0.72rem;font-weight:400;color:var(--light);}
 
 /* ── BCI POPUP ── */
@@ -499,7 +514,7 @@ footer{background:var(--off);padding:1.8rem 2.5rem;border-top:1px solid rgba(255
       <div class="hero-info-div"></div>
       <div>
         <div class="hero-info-label">Practice</div>
-        <div class="hero-info-text">Commercial Disputes<br>Cheque Bounce &middot; NI Act<br>Civil Litigation</div>
+        <div class="hero-info-text">Commercial Disputes<br>Cheque Bounce · NI Act<br>Civil Litigation</div>
       </div>
     </div>
   </div>
@@ -510,12 +525,12 @@ footer{background:var(--off);padding:1.8rem 2.5rem;border-top:1px solid rgba(255
   <div class="blog-inner">
     <p class="sec-label fade">Insights</p>
     <h2 class="blog-h2 fade">Read My<br><em>Blog.</em></h2>
-    <p class="blog-sub fade fd1">Plain-language writing on Indian law — commercial disputes, arbitration, civil litigation, and the practical realities of Delhi's courts.</p>
+    <p class="blog-sub fade fd1">Law that affects you, explained without the jargon. These are notes from practice.</p>
     <div class="blog-rule fade fd2"><span>✦</span></div>
     <ul class="blog-list fade fd2">
       <li class="blog-row" onclick="openArticle('a1')">
         <span class="blog-row-num">01</span>
-        <div><div class="blog-row-title">What Happens When a Cheque Bounces? Your Rights Under Section 138</div><div class="blog-row-cat">Cheque Bounce &middot; NI Act</div></div>
+        <div><div class="blog-row-title">What Happens When a Cheque Bounces? Your Rights Under Section 138</div><div class="blog-row-cat">Cheque Bounce · NI Act</div></div>
         <div class="blog-row-date">3 Mar 2026</div>
       </li>
       <li class="blog-row" onclick="openArticle('a2')">
@@ -525,7 +540,7 @@ footer{background:var(--off);padding:1.8rem 2.5rem;border-top:1px solid rgba(255
       </li>
       <li class="blog-row" onclick="openArticle('a3')">
         <span class="blog-row-num">03</span>
-        <div><div class="blog-row-title">Court or Arbitration — Which Is Right for Your Dispute?</div><div class="blog-row-cat">Arbitration</div></div>
+        <div><div class="blog-row-title">Court or Arbitration: Which Is Right for Your Dispute?</div><div class="blog-row-cat">Arbitration</div></div>
         <div class="blog-row-date">29 Jan 2026</div>
       </li>
       <li class="blog-row" onclick="openArticle('a4')">
@@ -548,7 +563,7 @@ footer{background:var(--off);padding:1.8rem 2.5rem;border-top:1px solid rgba(255
 <!-- PRACTICE -->
 <section class="practice" id="practice">
   <div class="practice-inner">
-    <p class="practice-label fade">Practice Areas — click any to learn more</p>
+    <p class="practice-label fade">Practice Areas. Click any card to learn more.</p>
     <ul class="prows">
       <li class="prow fade" onclick="openPractice('p1')">
         <div class="prow-icon">⚖️</div>
@@ -686,13 +701,13 @@ footer{background:var(--off);padding:1.8rem 2.5rem;border-top:1px solid rgba(255
 <div id="article-page">
   <div class="article-back-bar">
     <span class="article-back" onclick="closeArticle()">&#8592;&nbsp; Back to Blog</span>
-    <span class="article-back-name">Sachin Kumar Suman &mdash; Advocate</span>
+    <span class="article-back-name">Sachin Kumar Suman · Advocate</span>
   </div>
   <div class="article-body">
     <div id="article-slot"></div>
     <div class="article-foot">
       <span class="article-foot-back" onclick="closeArticle()">&#8592;&nbsp; Back to Blog</span>
-      <span class="article-foot-author">Sachin Kumar Suman &nbsp;&middot;&nbsp; Advocate, Delhi</span>
+      <span class="article-foot-author">Sachin Kumar Suman · Advocate, Delhi</span>
     </div>
   </div>
 </div>
@@ -733,7 +748,7 @@ footer{background:var(--off);padding:1.8rem 2.5rem;border-top:1px solid rgba(255
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── SLIDESHOW ── */
 var cur=0,slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.hero-dot'),tot=slides.length;
 function goTo(n){slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=n;slides[cur].classList.add('active');dots[cur].classList.add('active');}
@@ -914,28 +929,28 @@ ART['a5']='<div class="article-cat">Arbitration</div>'
 +'<h1 class="article-title">How to Enforce an Arbitral Award in India</h1>'
 +'<div class="article-meta"><span>Sachin Kumar Suman</span><span class="article-meta-dot">&#183;</span><span>28 December 2025</span><span class="article-meta-dot">&#183;</span><span>8 min read</span></div>'
 +'<div class="article-content">'
-+'<p>Winning an arbitration should be the end of the story. In practice, for many successful claimants, the real challenge begins only after the award is passed. The award debtor refuses to comply, challenges the award in court, or attempts to move assets beyond reach. Understanding the enforcement process is therefore essential — it determines whether arbitration will actually deliver the relief you seek.</p>'
++'<p>Winning an arbitration should be the end of the story. In practice, for many successful claimants, the real challenge begins only after the award is passed. The award debtor refuses to comply, challenges the award in court, or attempts to move assets beyond reach. Understanding the enforcement process is therefore essential.</p>'
 +'<h2>The Legal Framework</h2>'
-+'<p>Under Section 36 of the Arbitration and Conciliation Act, 1996, a domestic arbitral award is enforced as if it were a decree passed by a civil court. Once the award becomes enforceable — after the three-month challenge period under Section 34 expires without challenge, or any challenge is dismissed — the full machinery of civil court execution becomes available to the award holder.</p>'
-+'<h2>Step 1 — The Three-Month Waiting Period</h2>'
++'<p>Under Section 36 of the Arbitration and Conciliation Act, 1996, a domestic arbitral award is enforced as if it were a decree passed by a civil court. Once the award becomes enforceable, after the three-month challenge period under Section 34 expires without challenge, or any challenge is dismissed, the full machinery of civil court execution becomes available to the award holder.</p>'
++'<h2>Step 1. The Three-Month Waiting Period</h2>'
 +'<p>The award debtor has three months from receipt of the award to challenge it under Section 34. The award cannot be enforced during this period. Use this time to identify the debtor\'s bank accounts, property, vehicles, and receivables. If there are signs of asset dissipation, apply under Section 9 for an interim attachment order even before the challenge period ends.</p>'
-+'<h2>Step 2 — Check for a Challenge</h2>'
-+'<p>After three months, verify whether a Section 34 application has been filed. If not, proceed to enforcement. Under the 2015 amendment, the filing of a challenge does not automatically stay enforcement. The award debtor must separately apply for a stay, and courts typically require the deposit of the awarded amount as a condition.</p>'
-+'<h2>Step 3 — File the Execution Petition</h2>'
-+'<p>File an Execution Petition before the competent court with: a certified copy of the arbitral award, the original arbitration agreement, a supporting affidavit, and details of the assets against which execution is sought. In Delhi, these are filed in the Commercial Court under the Commercial Courts Act, 2015.</p>'
++'<h2>Step 2. Check for a Challenge</h2>'
++'<p>After three months, verify whether a Section 34 application has been filed. If not, proceed to enforcement. Under the 2015 amendment, the filing of a challenge does not automatically stay enforcement. The award debtor must separately apply for a stay, and courts typically require deposit of the awarded amount as a condition.</p>'
++'<h2>Step 3. File the Execution Petition</h2>'
++'<p>File an Execution Petition before the competent court with a certified copy of the arbitral award, the original arbitration agreement, a supporting affidavit, and details of the assets against which execution is sought. In Delhi, these are filed in the Commercial Court under the Commercial Courts Act, 2015.</p>'
 +'<h2>Modes of Execution</h2>'
 +'<h3>Bank Account Attachment</h3>'
 +'<p>The fastest remedy when you know the award debtor\'s bank account details. The court issues an attachment order to the bank, which freezes the account to the extent of the award. The bank then remits the funds to the court registry for release to you. In Delhi\'s Commercial Court, this can be completed in four to eight weeks.</p>'
 +'<h3>Attachment of Movable Property</h3>'
-+'<p>The court\'s bailiff can attach and sell movable assets — vehicles, machinery, stock in trade. More complex than bank attachment but effective for high-value identifiable assets.</p>'
++'<p>The court\'s bailiff can attach and sell movable assets such as vehicles, machinery, and stock in trade. More complex than bank attachment but effective for high-value identifiable assets.</p>'
 +'<h3>Attachment of Immovable Property</h3>'
-+'<p>The court can attach land and buildings and order a public auction. The most powerful remedy but also the slowest — from attachment to final sale typically takes one to two years.</p>'
++'<p>The court can attach land and buildings and order a public auction. The most powerful remedy but also the slowest. From attachment to final sale typically takes one to two years.</p>'
 +'<h3>Civil Arrest</h3>'
 +'<p>Where the debtor clearly has assets but wilfully refuses to pay, the court can order civil arrest and detention. Rarely used, but its availability is a powerful deterrent.</p>'
 +'<h2>Enforcement Abroad</h2>'
 +'<p>India is a signatory to the New York Convention on the Recognition and Enforcement of Foreign Arbitral Awards. An Indian arbitral award can be enforced in over 170 countries through their domestic courts, making arbitration far superior to court litigation for any dispute with an international dimension.</p>'
 +'<h2>Conclusion</h2>'
-+'<p>An arbitral award is only as valuable as your ability to enforce it. The system works — but it requires a claimant who has identified the debtor\'s assets, moves quickly once the challenge period expires, and chooses the right mode of execution. Enforcement is a specialised area of practice.</p>'
++'<p>An arbitral award is only as valuable as your ability to enforce it. The system works, but it requires a claimant who has identified the debtor\'s assets, moves quickly once the challenge period expires, and chooses the right mode of execution. Enforcement is a specialised area of practice.</p>'
 +'<p>For advice on enforcing an arbitral award, write to <a href="mailto:Sachinthelawyer@gmail.com" style="color:var(--black);border-bottom:1px solid var(--rule);">Sachinthelawyer@gmail.com</a>.</p>'
 +'</div>';
 
